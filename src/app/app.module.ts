@@ -8,7 +8,7 @@ import { WebPageContainerComponent } from './components/web-page-container/web-p
 import { TextComponent } from './components/text/text.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,13 +16,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
     WebPageContainerComponent,
     TextComponent,
     JumbotronComponent,
-    ProductListComponent
+    ProductListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule,DragDropModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import {
   Component,
   ComponentFactory,
@@ -17,27 +18,43 @@ import { BaseElementComponent } from '../base/baseElement.component';
   styleUrls: ['./web-page-container.component.scss'],
 })
 export class WebPageContainerComponent implements OnInit {
-  @Input() webPageConfig: BaseElementComponent[] | any;
+  @Input() webPageConfig: BaseElementComponent[] = [];
   @ViewChild(DynamicWebPageDirective, { static: true }) dynamicWebPage:
     | DynamicWebPageDirective
-    | any;
+    | undefined;
+
+  config: BaseElementComponent[] = [];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
+    this.config = [...this.webPageConfig];
+
     this.createComponent();
   }
 
   createComponent() {
-    this.webPageConfig.forEach((component: BaseElementComponent) => {
+    if (!this.dynamicWebPage) {
+      return;
+    }
+
+    const viewContainerRef: ViewContainerRef = this.dynamicWebPage
+      .viewContainerRef;
+    viewContainerRef.clear();
+    this.config.forEach((component: BaseElementComponent) => {
       this.loadComponent(component);
     });
   }
 
   loadComponent(component: BaseElementComponent) {
+    if (!this.dynamicWebPage) {
+      return;
+    }
+
     const componentFactory: ComponentFactory<BaseComponent> = this.componentFactoryResolver.resolveComponentFactory(
       component.component
     );
+
     const viewContainerRef: ViewContainerRef = this.dynamicWebPage
       .viewContainerRef;
 
@@ -46,5 +63,10 @@ export class WebPageContainerComponent implements OnInit {
     );
 
     componentRef.instance.data = component.data;
+  }
+
+  drop(event: CdkDragDrop<{ title: string; poster: string }[]>) {
+    moveItemInArray(this.config, event.previousIndex, event.currentIndex);
+    this.createComponent();
   }
 }
