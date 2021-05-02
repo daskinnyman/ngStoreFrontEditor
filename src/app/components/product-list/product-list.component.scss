@@ -1,0 +1,13 @@
+.productList {
+  display: flex;
+}
+
+.card {
+  width: 250px;
+  img {
+    width: 100%;
+    height: 250px;
+  }
+
+  margin: 0 12px;
+}

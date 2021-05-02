@@ -1,0 +1,9 @@
+<div>
+  <p>{{ data.name }}</p>
+  <div class="productList">
+    <div class="card" *ngFor="let product of data.products">
+      <img [src]="product.imgSrc" />
+      <h1>{{ product.name }}</h1>
+    </div>
+  </div>
+</div>
