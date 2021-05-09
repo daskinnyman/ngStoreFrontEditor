@@ -1,2 +1,12 @@
-<app-web-page-container [webPageConfig]="webComponent"></app-web-page-container>
-
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-9">
+      <app-web-page-container
+        [webPageConfig]="webComponent"
+      ></app-web-page-container>
+    </div>
+    <div class="col-3" *ngIf="isEditorMenuOpen$ | async">
+      <p>this is a editor</p>
+    </div>
+  </div>
+</div>
