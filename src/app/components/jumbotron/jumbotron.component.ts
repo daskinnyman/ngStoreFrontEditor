@@ -9,10 +9,12 @@ import { EditorService } from 'src/app/core/services/editor.service';
 })
 export class JumbotronComponent implements OnInit, BaseComponent {
   @Input() data: any;
+
   constructor(private editorService: EditorService) {}
   ngOnInit(): void {}
 
   toggleEditorMenu() {
     this.editorService.setEditorOpen(true);
+    this.editorService.setEditorProps(this.data);
   }
 }

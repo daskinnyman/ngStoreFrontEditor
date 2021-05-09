@@ -11,8 +11,11 @@ const elements = {
     {
       type: 'jumbotron',
       data: {
+        id: 5566,
         imgSrc:
           'https://images.unsplash.com/photo-1619705530795-f33ad8acab20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80',
+        width: 500,
+        height: 200,
       },
     },
     {
@@ -55,12 +58,14 @@ export class AppComponent implements OnInit {
   title = 'storeFrontEditorPoc';
   json = elements;
   isEditorMenuOpen$: Observable<boolean> | null = null;
+  editorProps: any = null;
   webComponent: BaseElementComponent[] = [];
 
   constructor(private editorService: EditorService) {}
 
   ngOnInit(): void {
     this.isEditorMenuOpen$ = this.editorService.editorOpen;
+    this.editorService.editorProps.subscribe((el) => (this.editorProps = el));
     this.setUpPage();
   }
 
@@ -84,6 +89,18 @@ export class AppComponent implements OnInit {
           break;
       }
     });
+  }
+
+  setEditorProps() {
+    console.log(this.editorProps);
+    const componentIndex = this.webComponent.findIndex(
+      (component: BaseElementComponent) =>
+        component.data.id === this.editorProps.id
+    );
+    console.log(componentIndex);
+
+    const componentArray = [...this.webComponent];
+    componentArray[componentIndex] = this.editorProps;
   }
 
   onEditorMenuClose() {

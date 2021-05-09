@@ -9,6 +9,7 @@ import { TextComponent } from './components/text/text.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     JumbotronComponent,
     ProductListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule,DragDropModule],
+  imports: [BrowserModule, AppRoutingModule, DragDropModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

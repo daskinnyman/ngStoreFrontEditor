@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class EditorService {
   private editorOpen$ = new BehaviorSubject<boolean>(false);
+  private editorProps$ = new BehaviorSubject<any>({});
 
   get editorOpen(): Observable<boolean> {
     return this.editorOpen$.asObservable();
@@ -13,5 +14,14 @@ export class EditorService {
 
   setEditorOpen(openState: boolean) {
     this.editorOpen$.next(openState);
+  }
+
+
+  get editorProps(): Observable<boolean> {
+    return this.editorProps$.asObservable();
+  }
+
+  setEditorProps(props: any) {
+    this.editorProps$.next(props);
   }
 }

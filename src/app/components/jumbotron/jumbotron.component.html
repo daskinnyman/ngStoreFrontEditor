@@ -1,1 +1,7 @@
-<div cdkDrag (click)="toggleEditorMenu()"><img [src]="data.imgSrc" width="400" height="400" /></div>
+<div cdkDrag (click)="toggleEditorMenu()">
+  <img
+    [src]="data.imgSrc"
+    [style.width.px]="this.data.width ? this.data.width : 400"
+    [style.height.px]="this.data.height ? this.data.height : 400"
+  />
+</div>
