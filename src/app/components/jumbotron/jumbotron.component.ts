@@ -15,6 +15,7 @@ export class JumbotronComponent implements OnInit, BaseComponent {
 
   toggleEditorMenu() {
     this.editorService.setEditorOpen(true);
+    this.data.type = 'jumbotron';
     this.editorService.setEditorProps(this.data);
   }
 }

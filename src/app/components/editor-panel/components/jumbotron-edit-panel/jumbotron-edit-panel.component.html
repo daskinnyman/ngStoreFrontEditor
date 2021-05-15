@@ -1,0 +1,19 @@
+<div *ngIf="this.editorProps">
+  <p>{{ this.editorProps?.type }}</p>
+  <input
+    *ngIf="this.editorProps.imgSrc !== null"
+    type="text"
+    [(ngModel)]="this.editorProps.imgSrc"
+  />
+  <input
+    *ngIf="this.editorProps.width !== null"
+    type="number"
+    [(ngModel)]="this.editorProps.width"
+  />
+  <input
+    *ngIf="this.editorProps.height !== null"
+    type="number"
+    [(ngModel)]="this.editorProps.height"
+  />
+</div>
+

@@ -10,6 +10,10 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { EditorPanelComponent } from './components/editor-panel/editor-panel.component';
+import { JumbotronEditPanelComponent } from './components/editor-panel/components/jumbotron-edit-panel/jumbotron-edit-panel.component';
+import { ProductListEditPanelComponent } from './components/editor-panel/components/product-list-edit-panel/product-list-edit-panel.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +22,9 @@ import { FormsModule } from '@angular/forms';
     TextComponent,
     JumbotronComponent,
     ProductListComponent,
+    EditorPanelComponent,
+    JumbotronEditPanelComponent,
+    ProductListEditPanelComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, DragDropModule, FormsModule],
   providers: [],

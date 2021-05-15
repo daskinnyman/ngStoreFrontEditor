@@ -1,0 +1,13 @@
+<div *ngIf="this.editorProps">
+  <p>{{ this.editorProps?.type }}</p>
+  <input
+    *ngIf="this.editorProps.name !== null"
+    type="text"
+    [(ngModel)]="this.editorProps.name"
+  />
+
+  <select [(ngModel)]="this.editorProps.productListId">
+    <option value="5566">mountain View</option>
+    <option value="5577">mama View</option>
+  </select>
+</div>

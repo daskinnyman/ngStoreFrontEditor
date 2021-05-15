@@ -38,8 +38,8 @@ export class WebPageContainerComponent implements OnInit {
       return;
     }
 
-    const viewContainerRef: ViewContainerRef = this.dynamicWebPage
-      .viewContainerRef;
+    const viewContainerRef: ViewContainerRef =
+      this.dynamicWebPage.viewContainerRef;
     viewContainerRef.clear();
     this.config.forEach((component: BaseElementComponent) => {
       this.loadComponent(component);
@@ -51,16 +51,16 @@ export class WebPageContainerComponent implements OnInit {
       return;
     }
 
-    const componentFactory: ComponentFactory<BaseComponent> = this.componentFactoryResolver.resolveComponentFactory(
-      component.component
-    );
+    const componentFactory: ComponentFactory<BaseComponent> =
+      this.componentFactoryResolver.resolveComponentFactory(
+        component.component
+      );
 
-    const viewContainerRef: ViewContainerRef = this.dynamicWebPage
-      .viewContainerRef;
+    const viewContainerRef: ViewContainerRef =
+      this.dynamicWebPage.viewContainerRef;
 
-    const componentRef = viewContainerRef.createComponent<BaseComponent>(
-      componentFactory
-    );
+    const componentRef =
+      viewContainerRef.createComponent<BaseComponent>(componentFactory);
 
     componentRef.instance.data = component.data;
   }

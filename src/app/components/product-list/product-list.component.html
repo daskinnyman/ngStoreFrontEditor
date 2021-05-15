@@ -1,7 +1,7 @@
-<div cdkDrag>
+<div cdkDrag (click)="toggleEditorMenu()">
   <p>{{ data.name }}</p>
-  <div class="productList">
-    <div class="card" *ngFor="let product of data.products">
+  <div class="productList col">
+    <div class="card col" *ngFor="let product of products">
       <img [src]="product.imgSrc" />
       <h1>{{ product.name }}</h1>
     </div>
